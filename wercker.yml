@@ -1,8 +1,11 @@
-box: wercker/default
+box: debian:stable-slim
 build:
     steps:
         - shellcheck:
             files: run.sh
+
+        - install-packages:
+            packages: curl
 
         - script:
             name: build shellcheck
@@ -17,3 +20,12 @@ build:
                 mkdir -p $WERCKER_ROOT/vendor/heroku
                 mv /tmp/heroku/heroku-client/* $WERCKER_ROOT/vendor/heroku
                 rm -rf $WERCKER_ROOT/.git $WERCKER_ROOT/.gitignore
+
+publish:
+  steps:
+    - install-packages:
+        packages: ca-certificates
+
+    - publish-step:
+        auth_token: $STEPS_AUTH_TOKEN
+        owner: wercker
