@@ -78,7 +78,7 @@ main() {
     if [ -n "$WERCKER_HEROKU_DEPLOY_RUN" ]; then
         if [ $exit_code_push -eq 0 ]; then
             set +e;
-            execute_heroku_command "$WERCKER_HEROKU_DEPLOY_APP_NAME" "$WERCKER_HEROKU_DEPLOY_RUN";
+            execute_heroku_command "$WERCKER_HEROKU_DEPLOY_APP_NAME" "$WERCKER_HEROKU_DEPLOY_RUN" "$WERCKER_HEROKU_DEPLOY_RUN_ARGS";
             exit_code_run=$?
             set -e;
         fi
@@ -253,9 +253,10 @@ push_code() {
 execute_heroku_command() {
     local app_name="$1";
     local command="$2";
+    local command_args="$3";
 
     debug "starting heroku run $command";
-    heroku run -x "$command" --app "$app_name";
+    heroku run "$command_args" "$command" --app "$app_name";
     local exit_code_run=$?;
 
     debug "heroku run exited with $exit_code_run";

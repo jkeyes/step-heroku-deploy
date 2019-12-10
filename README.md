@@ -40,6 +40,7 @@ The following dependencies are only required when using temporary keys (see:
   set `retry` to `false`.
 * `run` (optional) Run a command on heroku after the code is deployed
   succesfully. This option can be used to migrate the database for example.
+* `run-args` (optional) Additional arguments to be passed to the `heroku run` command e.g. `-x`.
 * `install-toolbelt` (optional). If set to 'true', the toolbelt will be
   installed. Note: specifying a run command will also install the toolbelt.
 * `keep-repository` (optional) This will allow a user to keep the original
