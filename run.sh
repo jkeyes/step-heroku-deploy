@@ -255,7 +255,7 @@ execute_heroku_command() {
     local command="$2";
 
     debug "starting heroku run $command";
-    heroku run "$command" --app "$app_name";
+    heroku run -x "$command" --app "$app_name";
     local exit_code_run=$?;
 
     debug "heroku run exited with $exit_code_run";
