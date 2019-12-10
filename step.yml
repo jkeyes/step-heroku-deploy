@@ -1,5 +1,5 @@
-name: jkeyes-heroku-deploy
-version: 3.1.2
+name: heroku-deploy
+version: 3.1.3
 summary: heroku-deploy step
 tags:
   - heroku
