@@ -23,5 +23,4 @@ build:
 
 publish:
   steps:
-    - internal/publish-step:
-        owner: wercker
+    - internal/publish-step
