@@ -187,8 +187,6 @@ init_gitssh() {
 }
 
 install_toolbelt() {
-    check_ruby;
-
     if ! type heroku &> /dev/null; then
         info 'heroku toolbelt not found, starting installing it';
 
@@ -256,7 +254,7 @@ execute_heroku_command() {
     local command_args="$3";
 
     debug "starting heroku run $command";
-    heroku run "$command_args" "$command" --app "$app_name";
+    heroku run $command_args $command --app "$app_name";
     local exit_code_run=$?;
 
     debug "heroku run exited with $exit_code_run";
@@ -374,19 +372,6 @@ check_curl() {
 
             sudo apt-get update;
             sudo apt-get install curl -y;
-        fi
-    fi
-}
-
-check_ruby() {
-    if ! type ruby &> /dev/null; then
-        if ! type apt-get &> /dev/null; then
-            fail "ruby is not available. Install it, and make sure it is available in \$PATH"
-        else
-            debug "ruby not found; installing it."
-
-            sudo apt-get update;
-            sudo apt-get install ruby-full -y;
         fi
     fi
 }

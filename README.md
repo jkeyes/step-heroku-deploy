@@ -103,6 +103,10 @@ The MIT License (MIT)
 
 # Changelog
 
+## 3.1.4
+- Remove check_ruby
+- Remove double quotes from run parameters
+
 ## 3.0.1
 
 - Fix sending randomly generating SSH keys to Heroku
