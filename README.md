@@ -103,6 +103,9 @@ The MIT License (MIT)
 
 # Changelog
 
+## 3.1.5
+- Follow latest Heroku recommendations on how to install the CLI
+
 ## 3.1.4
 - Remove check_ruby
 - Remove double quotes from run parameters

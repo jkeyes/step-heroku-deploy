@@ -189,12 +189,7 @@ init_gitssh() {
 install_toolbelt() {
     if ! type heroku &> /dev/null; then
         info 'heroku toolbelt not found, starting installing it';
-
-        # extract from $steproot/heroku-client.tgz into /usr/local/heroku
-        sudo rm -rf /usr/local/heroku
-        sudo cp -r "$WERCKER_STEP_ROOT/vendor/heroku" /usr/local/heroku
-        export PATH="/usr/local/heroku/bin:$PATH"
-
+        curl https://cli-assets.heroku.com/install.sh | sh
         info 'finished heroku toolbelt installation';
     else
         info 'heroku toolbelt is available, and will not be installed by this step';
